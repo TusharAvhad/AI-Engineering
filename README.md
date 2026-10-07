@@ -42,6 +42,14 @@ The full method is written up in
 | [meta/how-to-write-a-skill.md](meta/how-to-write-a-skill.md) | The complete method for writing an effective skill, with templates and an anti-hallucination checklist. |
 | [meta/response-efficiency.md](meta/response-efficiency.md) | A global ruleset that makes any AI answer accurately, concisely, and without false positives. |
 
+### AI guardrails
+| Prompt | What it does |
+|---|---|
+| [AI-guidrails/README.md](AI-guidrails/README.md) | Central index for the repo's reusable AI guardrails and steering files. |
+| [AI-guidrails/global-engineering-standards.md](AI-guidrails/global-engineering-standards.md) | Global engineering standards that apply to every session and workspace by default. |
+| [AI-guidrails/secure-coding-rules.md](AI-guidrails/secure-coding-rules.md) | Security-first rules for input validation, auth, authorization, encryption, and safe coding. |
+| [AI-guidrails/aws-well-architected-review-steering.md](AI-guidrails/aws-well-architected-review-steering.md) | Manual-use AWS Well-Architected review guidance grounded in repo evidence and pillar scoring. |
+
 ### Codebase design
 | Prompt | What it does |
 |---|---|
@@ -113,10 +121,13 @@ Kiro uses **steering files** and **skills** inside a `.kiro/` folder.
    `.kiro/steering/<name>.md`. Front-matter controls when it loads
    (`inclusion: always`, `fileMatch`, `manual`, or `auto`) — see
    `meta/response-efficiency.md`, which already uses `inclusion: always`.
-2. **Skills (invoked on demand):** copy a prompt into
+2. **Repo-level guardrails:** keep reusable steering files in
+   `AI-guidrails/`, then copy the relevant file into `.kiro/steering/` when you
+   want that policy active in a project.
+3. **Skills (invoked on demand):** copy a prompt into
    `.kiro/skills/<name>/SKILL.md`. The front-matter `name` and `description`
    drive when Kiro activates it — the prompts here already include these.
-3. Reload the window (or start a new session) so Kiro picks up the new files.
+4. Reload the window (or start a new session) so Kiro picks up the new files.
 
 ### Google Gemini
 
